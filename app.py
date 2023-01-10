@@ -1,5 +1,3 @@
-
-
 import time
 import subprocess
 from selenium import webdriver
@@ -20,12 +18,14 @@ driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()),
 driver.get("https://www.bing.com/")
 driver.maximize_window()
 
-time.sleep(3)
+
+time.sleep(5)
 
 
 download_btn = driver.find_element("xpath", "//a[@class='downloadLink ']")
 driver.implicitly_wait(10)
 ActionChains(driver).move_to_element(download_btn).click(download_btn).perform()
+
 
 time.sleep(3)
 driver.quit()
@@ -33,6 +33,7 @@ driver.quit()
 
 subprocess.run('mv /home/amir/Downloads/BingWallpaper.jpg /tmp', shell = True)
 subprocess.run("gsettings set org.gnome.desktop.background picture-uri-dark 'file:///tmp/BingWallpaper.jpg'", shell = True)
+
 
 
 
